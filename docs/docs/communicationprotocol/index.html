@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communicationprotocol | 首页</title>
+
+<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700" rel="stylesheet">
+<link rel="stylesheet" href="/normalize.min.css">
+
+
+<link rel="stylesheet" href="/flyer-job/book.min.c8c8e50ed288f167b51b63d6da0960cfaa3aa1b351c38bea4fd536d969bc1aec.css">
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main>
+
+    <aside class="menu fixed">
+      <nav role="navigation">
+        <h2 class="brand">
+  <a href="https://vancefantasy.github.io/flyer-job">首页</a>
+</h2>
+        
+        
+        
+          <ul>
+<li><a href="/docs/introducing">向你介绍</a></li>
+<li><a href="/docs/deployguide">部署指南</a></li>
+<li><a href="/docs/firstjob">接入第一个任务</a></li>
+
+<li><p><a href="/docs/design">设计</a></p>
+
+<ul>
+<li><a href="/docs/architecture">架构</a></li>
+<li><a href="/docs/communicationprotocol">通信协议</a></li>
+</ul></li>
+
+<li><p><a href="/docs/faq">FAQ</a></p></li>
+</ul>
+
+        
+      
+        
+      </nav>
+    </aside>
+
+    <div class="content">
+      <header>
+        <label for="menu-control">
+  <img src="https://vancefantasy.github.io/flyer-job/svg/menu.svg" />
+</label>
+<strong>Communicationprotocol</strong>
+      </header>
+      <article class="markdown">
+
+<h2 id="协议时序图">协议时序图</h2>
+
+<p><img src="../../imgs/protocol_seq.png" alt="通信协议" /></p>
+
+<h2 id="协议设计">协议设计</h2>
+
+<h3 id="总体结构">总体结构</h3>
+
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>起始</td>
+<td>固定 00 01</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>包长</td>
+<td>int</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>协议号</td>
+<td>int</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>协议版本</td>
+<td>short</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>包编号</td>
+<td>long</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>包体</td>
+<td>byte[]</td>
+<td>{ &hellip; }</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1000">1000</h3>
+
+<pre><code>//null body
+</code></pre>
+
+<h3 id="1001">1001</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>serverVersion</td>
+<td>int</td>
+<td>服务器配置版本号</td>
+</tr>
+
+<tr>
+<td>servers</td>
+<td>string</td>
+<td>服务器配置</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1002">1002</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>appCode</td>
+<td>string</td>
+<td>应用信息</td>
+</tr>
+
+<tr>
+<td>jobs</td>
+<td>string</td>
+<td>任务信息：jobs,jobs2</td>
+</tr>
+
+<tr>
+<td>req</td>
+<td>byte</td>
+<td>请求标记:00</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1003">1003</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>resp</td>
+<td>byte</td>
+<td>响应标记:01</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1004">1004</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>appCode</td>
+<td>string</td>
+<td>应用信息</td>
+</tr>
+
+<tr>
+<td>req</td>
+<td>byte</td>
+<td>请求标记:00</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1005">1005</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>resp</td>
+<td>byte</td>
+<td>响应标记:01</td>
+</tr>
+
+<tr>
+<td>serverVersion</td>
+<td>int</td>
+<td>服务端配置版本号</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1006">1006</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+
+<tr>
+<td>paramData</td>
+<td>string</td>
+<td>参数信息</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1007">1007</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+
+<tr>
+<td>result</td>
+<td>byte</td>
+<td>提交结果0 提交成功 1 提交失败</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1008">1008</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+
+<tr>
+<td>result</td>
+<td>byte</td>
+<td>执行结果0 执行成功 1 执行失败 2 任务取消</td>
+</tr>
+
+<tr>
+<td>logStr</td>
+<td>string</td>
+<td>执行日志</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1009">1009</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+
+<tr>
+<td>result</td>
+<td>byte</td>
+<td>处理结果0 处理成功 1 处理失败</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1010">1010</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1011">1011</h3>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobBeanId</td>
+<td>string</td>
+<td>任务beanId</td>
+</tr>
+
+<tr>
+<td>result</td>
+<td>byte</td>
+<td>取消结果0 取消成功 1 取消失败</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1012">1012</h3>
+
+<pre><code>//todo
+</code></pre>
+
+<h3 id="1013">1013</h3>
+
+<pre><code>//todo
+</code></pre>
+</article>
+    </div>
+
+    
+    
+    <aside class="toc fixed">
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#协议时序图">协议时序图</a></li>
+<li><a href="#协议设计">协议设计</a>
+<ul>
+<li><a href="#总体结构">总体结构</a></li>
+<li><a href="#1000">1000</a></li>
+<li><a href="#1001">1001</a></li>
+<li><a href="#1002">1002</a></li>
+<li><a href="#1003">1003</a></li>
+<li><a href="#1004">1004</a></li>
+<li><a href="#1005">1005</a></li>
+<li><a href="#1006">1006</a></li>
+<li><a href="#1007">1007</a></li>
+<li><a href="#1008">1008</a></li>
+<li><a href="#1009">1009</a></li>
+<li><a href="#1010">1010</a></li>
+<li><a href="#1011">1011</a></li>
+<li><a href="#1012">1012</a></li>
+<li><a href="#1013">1013</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </aside>
+    
+
+  </main>
+  
+</body>
+</html>
