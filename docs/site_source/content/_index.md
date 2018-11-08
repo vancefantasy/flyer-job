@@ -9,6 +9,6 @@ flyer job 是一个分布式、轻量级的任务调度平台，基于java和qua
 
 flyer job is a distributed,lightweight job scheduling platform,base on java and quartz.
 
-[Github](https://github.com/vancefantasy/flyer-job)
+<a href="https://github.com/vancefantasy/flyer-job" target="_blank">GitHub</a>
 
 Create by vancefantasy
