@@ -11,16 +11,54 @@
     
     
     <item>
-      <title></title>
+      <title>FAQ</title>
+      <link>https://vancefantasy.github.io/flyer-job/docs/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vancefantasy.github.io/flyer-job/docs/faq/</guid>
+      <description> FAQ flyer job是什么 flyer job支持分布式部署么 为什么集群设置修改了没有生效 </description>
+    </item>
+    
+    <item>
+      <title>向你介绍</title>
+      <link>https://vancefantasy.github.io/flyer-job/docs/introducing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vancefantasy.github.io/flyer-job/docs/introducing/</guid>
+      <description> 向你介绍 为什么需要一个任务调度系统 出发点 </description>
+    </item>
+    
+    <item>
+      <title>接入一个任务</title>
+      <link>https://vancefantasy.github.io/flyer-job/docs/firstjob/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vancefantasy.github.io/flyer-job/docs/firstjob/</guid>
+      <description>接入一个任务 在此之前  flyer job暂时只支持spring环境(springframwork,springboot)接入
+ 客户端 引入依赖  flyer-job-client暂时还没上传至maven官方仓库
+ &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;io.github.vancefantasy&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyer-job-client&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.0.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  配置 //properties //note:加载properties文件时，请将ignoreUnresolvablePlaceholders设置为true flyer.appCode=flyerjob-springmvc-showcase flyer.servers=127.0.0.1:20180 flyer.vhost=dev //for springframwork &amp;lt;bean class=&amp;quot;com.elong.flyer.client.FlyerClientContext&amp;quot;/&amp;gt; //for springboot @Bean public FlyerClientContext registerBean() { return new FlyerClientContext(); }  HelloWorldJob package com.flyer.job.example.jobs; import com.flyer.job.client.FlyerJob; import com.flyer.job.client.FlyerResult; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.stereotype.Component; @Component public class HelloWorldJob extends FlyerJob { private final static Logger log = LoggerFactory.getLogger(HelloWorldJob.class); @Override public FlyerResult execute(String param) throws Exception { log.</description>
+    </item>
+    
+    <item>
+      <title>架构</title>
       <link>https://vancefantasy.github.io/flyer-job/docs/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vancefantasy.github.io/flyer-job/docs/architecture/</guid>
-      <description> 架构图 解释  Metuunt non paene iniectis licuit Extemplo iugulum relictis reddidit caput Frustra adspiceres viae Non fluctibus civiliter pater procedit non Deos spumis ille aderam semper Stygios quantum Orgia hoc  </description>
+      <description> 架构图 说明  Metuunt non paene iniectis licuit Extemplo iugulum relictis reddidit caput Frustra adspiceres viae Non fluctibus civiliter pater procedit non Deos spumis ille aderam semper Stygios quantum Orgia hoc  </description>
     </item>
     
     <item>
-      <title></title>
+      <title>设计</title>
+      <link>https://vancefantasy.github.io/flyer-job/docs/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vancefantasy.github.io/flyer-job/docs/design/</guid>
+      <description> 关于设计 </description>
+    </item>
+    
+    <item>
+      <title>通信协议</title>
       <link>https://vancefantasy.github.io/flyer-job/docs/communicationprotocol/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -29,66 +67,19 @@
     </item>
     
     <item>
-      <title></title>
+      <title>部署指南</title>
       <link>https://vancefantasy.github.io/flyer-job/docs/deployguide/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vancefantasy.github.io/flyer-job/docs/deployguide/</guid>
-      <description> 前置环境  安装MySQL
+      <description> 部署指南 前置环境  安装MySQL
 (过程略)
  准备数据库
-//创建DB
-CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci;
-//导入建表脚本
-cat /path/to/flyer_job.sql | mysql -uroot -pxxx
-//创建用户
-create user flyer_job_w identified by &amp;lsquo;123456&amp;rsquo;;
-//权限
-grant all privileges on flyer_job.* to flyer_job_w; flush privileges;
-  获取软件安装包  修改启动脚本
+//创建DB CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci; //导入建表脚本 cat /path/to/flyer_job.sql | mysql -uroot -pxxx //创建用户 create user flyer_job_w identified by &#39;123456&#39;; //权限 grant all privileges on flyer_job.* to flyer_job_w; flush privileges;   获取软件安装包  修改启动脚本
 //
  启动
 //
   静态资源单独部署(可选) </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vancefantasy.github.io/flyer-job/docs/design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vancefantasy.github.io/flyer-job/docs/design/</guid>
-      <description>Mentem genus facietque salire tempus bracchia Lorem markdownum partu paterno Achillem. Habent amne generosi aderant ad pellem nec erat sustinet merces columque haec et, dixit minus nutrit accipiam subibis subdidit. Temeraria servatum agros qui sed fulva facta. Primum ultima, dedit, suo quisque linguae medentes fixo: tum petis.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vancefantasy.github.io/flyer-job/docs/faq/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vancefantasy.github.io/flyer-job/docs/faq/</guid>
-      <description> flyer job是什么 flyer job支持分布式部署么 为什么集群设置修改了没有生效 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vancefantasy.github.io/flyer-job/docs/firstjob/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vancefantasy.github.io/flyer-job/docs/firstjob/</guid>
-      <description>在此之前  flyer job暂时只支持spring环境(springframwork,springboot)接入
- 客户端 引入依赖  flyer-job-client暂时还没上传至maven官方仓库
- &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;io.github.vancefantasy&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;flyer-job-client&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.0.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  配置 //properties //note:加载properties文件时，请将ignoreUnresolvablePlaceholders设置为true flyer.appCode=flyerjob-springmvc-showcase flyer.servers=127.0.0.1:20180 flyer.vhost=dev //for springframwork &amp;lt;bean class=&amp;quot;com.elong.flyer.client.FlyerClientContext&amp;quot;/&amp;gt; //for springboot @Bean public FlyerClientContext registerBean() { return new FlyerClientContext(); }  HelloWorldJob.java package com.flyer.job.example.jobs; import com.flyer.job.client.FlyerJob; import com.flyer.job.client.FlyerResult; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.stereotype.Component; @Component public class HelloWorldJob extends FlyerJob { private final static Logger log = LoggerFactory.getLogger(HelloWorldJob.class); @Override public FlyerResult execute(String param) throws Exception { log.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vancefantasy.github.io/flyer-job/docs/introducing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vancefantasy.github.io/flyer-job/docs/introducing/</guid>
-      <description>  一个分布式、轻量级、集中式任务调度平台，基于Java和Quartz.
- 为什么需要一个调度系统 出发点 </description>
     </item>
     
   </channel>

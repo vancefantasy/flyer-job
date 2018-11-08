@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deployguide | 首页</title>
+<title>部署指南 | 首页</title>
 
 <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="/flyer-job/normalize.min.css">
@@ -29,16 +29,14 @@
           <ul>
 <li><a href="/flyer-job/docs/introducing">向你介绍</a></li>
 <li><a href="/flyer-job/docs/deployguide">部署指南</a></li>
-<li><a href="/flyer-job/docs/firstjob">接入第一个任务</a></li>
-
-<li><p><a href="/flyer-job/docs/design">设计</a></p>
+<li><a href="/flyer-job/docs/firstjob">接入一个任务</a></li>
+<li><a href="/flyer-job/docs/design">设计</a>
 
 <ul>
 <li><a href="/flyer-job/docs/architecture">架构</a></li>
 <li><a href="/flyer-job/docs/communicationprotocol">通信协议</a></li>
 </ul></li>
-
-<li><p><a href="/flyer-job/docs/faq">FAQ</a></p></li>
+<li><a href="/flyer-job/docs/faq">FAQ</a></li>
 </ul>
 
         
@@ -52,9 +50,11 @@
         <label for="menu-control">
   <img src="https://vancefantasy.github.io/flyer-job//svg/menu.svg" />
 </label>
-<strong>Deployguide</strong>
+<strong>部署指南</strong>
       </header>
       <article class="markdown">
+
+<h1 id="部署指南">部署指南</h1>
 
 <h2 id="前置环境">前置环境</h2>
 
@@ -65,22 +65,18 @@
 
 <li><p>准备数据库</p>
 
-<p>//创建DB</p>
+<pre><code>//创建DB
+CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci;   
+//导入建表脚本
+cat /path/to/flyer_job.sql | mysql -uroot -pxxx 
 
-<p>CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci;</p>
+//创建用户
+create user flyer_job_w identified by '123456';
 
-<p>//导入建表脚本</p>
-
-<p>cat /path/to/flyer_job.sql | mysql -uroot -pxxx</p>
-
-<p>//创建用户</p>
-
-<p>create user flyer_job_w identified by &lsquo;123456&rsquo;;</p>
-
-<p>//权限</p>
-
-<p>grant all privileges on flyer_job.* to flyer_job_w;
-flush privileges;</p></li>
+//权限
+grant all privileges on flyer_job.* to flyer_job_w;
+flush privileges;
+</code></pre></li>
 </ol>
 
 <h2 id="获取软件安装包">获取软件安装包</h2>
@@ -104,7 +100,7 @@ flush privileges;</p></li>
     <aside class="toc fixed">
       <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#部署指南">部署指南</a>
 <ul>
 <li><a href="#前置环境">前置环境</a></li>
 <li><a href="#获取软件安装包">获取软件安装包</a></li>

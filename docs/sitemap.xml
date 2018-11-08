@@ -3,34 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/architecture/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/communicationprotocol/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/deployguide/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/design/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/faq/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/firstjob/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vancefantasy.github.io/flyer-job/docs/introducing/</loc>
-  </url>
-  
-  <url>
     <loc>https://vancefantasy.github.io/flyer-job/categories/</loc>
     <priority>0</priority>
   </url>
@@ -41,8 +13,36 @@
   </url>
   
   <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/faq/</loc>
+  </url>
+  
+  <url>
     <loc>https://vancefantasy.github.io/flyer-job/tags/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/introducing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/firstjob/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/design/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/communicationprotocol/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vancefantasy.github.io/flyer-job/docs/deployguide/</loc>
   </url>
   
   <url>

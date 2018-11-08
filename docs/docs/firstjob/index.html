@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Firstjob | 首页</title>
+<title>接入一个任务 | 首页</title>
 
 <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="/flyer-job/normalize.min.css">
@@ -29,16 +29,14 @@
           <ul>
 <li><a href="/flyer-job/docs/introducing">向你介绍</a></li>
 <li><a href="/flyer-job/docs/deployguide">部署指南</a></li>
-<li><a href="/flyer-job/docs/firstjob">接入第一个任务</a></li>
-
-<li><p><a href="/flyer-job/docs/design">设计</a></p>
+<li><a href="/flyer-job/docs/firstjob">接入一个任务</a></li>
+<li><a href="/flyer-job/docs/design">设计</a>
 
 <ul>
 <li><a href="/flyer-job/docs/architecture">架构</a></li>
 <li><a href="/flyer-job/docs/communicationprotocol">通信协议</a></li>
 </ul></li>
-
-<li><p><a href="/flyer-job/docs/faq">FAQ</a></p></li>
+<li><a href="/flyer-job/docs/faq">FAQ</a></li>
 </ul>
 
         
@@ -52,9 +50,11 @@
         <label for="menu-control">
   <img src="https://vancefantasy.github.io/flyer-job//svg/menu.svg" />
 </label>
-<strong>Firstjob</strong>
+<strong>接入一个任务</strong>
       </header>
       <article class="markdown">
+
+<h1 id="接入一个任务">接入一个任务</h1>
 
 <h1 id="在此之前">在此之前</h1>
 
@@ -95,7 +95,7 @@ public FlyerClientContext registerBean() {
 }
 </code></pre>
 
-<h2 id="helloworldjob-java">HelloWorldJob.java</h2>
+<h2 id="helloworldjob">HelloWorldJob</h2>
 
 <pre><code>package com.flyer.job.example.jobs;
 import com.flyer.job.client.FlyerJob;
@@ -154,12 +154,13 @@ public class HelloWorldJob extends FlyerJob {
     <aside class="toc fixed">
       <nav id="TableOfContents">
 <ul>
+<li><a href="#接入一个任务">接入一个任务</a></li>
 <li><a href="#在此之前">在此之前</a></li>
 <li><a href="#客户端">客户端</a>
 <ul>
 <li><a href="#引入依赖">引入依赖</a></li>
 <li><a href="#配置">配置</a></li>
-<li><a href="#helloworldjob-java">HelloWorldJob.java</a></li>
+<li><a href="#helloworldjob">HelloWorldJob</a></li>
 </ul></li>
 <li><a href="#服务端-控制台">服务端&amp;控制台</a>
 <ul>
