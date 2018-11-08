@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flyer.job.dao.FlyerUsersDao">
+
+    <resultMap id="flyerUsersMap" type="com.flyer.job.domain.FlyerUsers">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_pwd" property="userPwd"/>
+        <result column="add_time" property="addTime"/>
+    </resultMap>
+
+    <sql id="flyerUsersColumn">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userName != null">user_name,</if>
+            <if test="userPwd != null">user_pwd,</if>
+            <if test="addTime != null">add_time,</if>
+        </trim>
+    </sql>
+    <sql id="flyerUsersValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="userPwd != null">#{userPwd},</if>
+            <if test="addTime != null">#{addTime},</if>
+        </trim>
+    </sql>
+    <sql id="flyerUsersBaseColumn">
+        <trim suffix="" suffixOverrides=",">
+            id,
+            user_name,
+            user_pwd,
+            add_time,
+        </trim>
+    </sql>
+
+	<insert id="saveFlyerUsers" parameterType="com.flyer.job.domain.FlyerUsers" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="Integer" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into flyer_users (<include refid="flyerUsersColumn"/>)
+		values (<include refid="flyerUsersValue"/>)
+	</insert>
+
+	<update id="updateFlyerUsers" parameterType="com.flyer.job.domain.FlyerUsers">
+	 	update flyer_users
+		<set>
+			<if test="userName != null">user_name=#{userName},</if>
+			<if test="userPwd != null">user_pwd=#{userPwd},</if>
+			<if test="addTime != null">add_time=#{addTime},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+    <delete id="removeFlyerUsersById" parameterType="java.lang.Long">
+    	delete from flyer_users
+    	where id = #{id}
+    </delete>
+
+    <select id="findFlyerUsersById" parameterType="java.lang.Long" resultMap="flyerUsersMap">
+        select
+        <include refid="flyerUsersBaseColumn"/>
+        from flyer_users
+        where id = #{id}
+    </select>
+
+	<select id="searchPageList" parameterType="java.lang.String" resultMap="flyerUsersMap">
+		select <include refid="flyerUsersBaseColumn"/>
+		from flyer_users
+		<if test="userName != null and userName != ''">
+			where user_name like #{userName}
+		</if>
+	</select>
+
+	<select id="getAllFlyerUsers" resultMap="flyerUsersMap">
+		select <include refid="flyerUsersBaseColumn"/>
+		from flyer_users
+	</select>
+
+	<select id="getUserByUserName" parameterType="java.lang.String" resultMap="flyerUsersMap">
+		select <include refid="flyerUsersBaseColumn"/>
+		from flyer_users
+		where user_name = #{userName}
+	</select>
+</mapper>

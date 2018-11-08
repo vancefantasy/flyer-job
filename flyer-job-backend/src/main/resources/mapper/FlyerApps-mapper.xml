@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flyer.job.dao.FlyerAppsDao">
+
+    <resultMap id="flyerAppsMap" type="com.flyer.job.domain.FlyerApps">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="app_code" property="appCode"/>
+        <result column="app_name" property="appName"/>
+        <result column="app_desc" property="appDesc"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <sql id="flyerAppsColumn">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="appCode != null">app_code,</if>
+            <if test="appName != null">app_name,</if>
+            <if test="appDesc != null">app_desc,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+    </sql>
+    <sql id="flyerAppsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="appCode != null">#{appCode},</if>
+            <if test="appName != null">#{appName},</if>
+            <if test="appDesc != null">#{appDesc},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </sql>
+    <sql id="flyerAppsBaseColumn">
+        <trim suffix="" suffixOverrides=",">
+            id,
+            app_code,
+            app_name,
+            app_desc,
+            create_time,
+        </trim>
+    </sql>
+
+    <insert id="saveFlyerApps" parameterType="com.flyer.job.domain.FlyerApps"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into flyer_apps (<include refid="flyerAppsColumn"/>)
+        values (<include refid="flyerAppsValue"/>)
+    </insert>
+
+    <update id="updateFlyerApps" parameterType="com.flyer.job.domain.FlyerApps">
+        update flyer_apps
+        <set>
+            <if test="appCode != null">app_code=#{appCode},</if>
+            <if test="appName != null">app_name=#{appName},</if>
+            <if test="appDesc != null">app_desc=#{appDesc},</if>
+            <if test="createTime != null">create_time=#{createTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="batchRemoveByIds">
+        delete from flyer_apps
+        where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="removeFlyerAppsById" parameterType="java.lang.Long">
+    	delete from flyer_apps
+    	where id = #{id}
+    </delete>
+
+    <select id="findFlyerAppsById" parameterType="java.lang.Long" resultMap="flyerAppsMap">
+        select
+        <include refid="flyerAppsBaseColumn"/>
+        from flyer_apps
+        where id = #{id}
+    </select>
+
+    <select id="searchPageList" parameterType="java.lang.String" resultMap="flyerAppsMap">
+        select
+        <include refid="flyerAppsBaseColumn"/>
+        from flyer_apps
+        <if test="appName != null and appName!=''">
+            where app_name like #{appName}
+        </if>
+    </select>
+    <select id="getAllFlyerApps" resultMap="flyerAppsMap">
+        select
+        <include refid="flyerAppsBaseColumn"/>
+        from flyer_apps
+    </select>
+
+</mapper>

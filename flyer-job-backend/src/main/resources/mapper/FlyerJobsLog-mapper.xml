@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flyer.job.dao.FlyerJobsLogDao">
+
+    <resultMap id="flyerJobsLogMap" type="com.flyer.job.domain.FlyerJobsLog">
+        <id column="id" property="id" />
+        <result column="id" property="id" />
+        <result column="record_id" property="recordId" />
+        <result column="log_level" property="logLevel" />
+        <result column="job_bean_id" property="jobBeanId" />
+        <result column="log_text" property="logText" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <sql id ="flyerJobsLogColumn">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="recordId != null">record_id,</if>
+            <if test="logLevel != null">log_level,</if>
+            <if test="jobBeanId != null">job_bean_id,</if>
+            <if test="logText != null">log_text,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+    </sql>
+    <sql id="flyerJobsLogValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="recordId != null">#{recordId},</if>
+            <if test="logLevel != null">#{logLevel},</if>
+            <if test="jobBeanId != null">#{jobBeanId},</if>
+            <if test="logText != null">#{logText},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </sql>
+    <sql id="flyerJobsLogBaseColumn">
+        <trim suffix="" suffixOverrides=",">
+            id,
+            record_id,
+            log_level,
+            job_bean_id,
+            log_text,
+            create_time,
+        </trim>
+    </sql>
+
+    <insert id="saveFlyerJobsLog" parameterType="com.flyer.job.domain.FlyerJobsLog" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into flyer_jobs_log (<include refid="flyerJobsLogColumn"/>)
+        values (<include refid="flyerJobsLogValue"/>)
+    </insert>
+
+    <update id="updateFlyerJobsLog" parameterType="com.flyer.job.domain.FlyerJobsLog">
+        update flyer_jobs_log
+        <set>
+            <if test="recordId != null">record_id=#{recordId},</if>
+            <if test="logLevel != null">log_level=#{logLevel},</if>
+            <if test="jobBeanId != null">job_bean_id=#{jobBeanId},</if>
+            <if test="logText != null">log_text=#{logText},</if>
+            <if test="createTime != null">create_time=#{createTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="removeFlyerJobsLog" parameterType="java.lang.Long">
+        delete from flyer_jobs_log
+        where id = #{id}
+    </delete>
+
+    <select id="findFlyerJobsLogById" parameterType="java.lang.Long" resultMap="flyerJobsLogMap">
+        select <include refid="flyerJobsLogBaseColumn"/>
+        from flyer_jobs_log
+        where id = #{id}
+    </select>
+    <select id="listByRecordId" resultMap="flyerJobsLogMap">
+        select <include refid="flyerJobsLogBaseColumn"/>
+        from flyer_jobs_log
+        where record_id=#{recordId}
+    </select>
+
+    <select id="calcCount" resultType="java.lang.Long">
+        select count(id)
+        from flyer_jobs_log
+        where job_bean_id=#{jobBeanId}
+    </select>
+
+    <delete id="removeByLimit">
+        delete from flyer_jobs_log
+        where job_bean_id=#{jobBeanId} limit 500;
+    </delete>
+
+</mapper>

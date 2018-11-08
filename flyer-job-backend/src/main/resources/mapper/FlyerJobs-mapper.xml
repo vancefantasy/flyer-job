@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flyer.job.dao.FlyerJobsDao">
+
+    <resultMap id="flyerJobsMap" type="com.flyer.job.domain.FlyerJobs">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="job_name" property="jobName"/>
+        <result column="app_id" property="appId"/>
+        <result column="app_code" property="appCode"/>
+        <result column="vhost" property="vhost"/>
+        <result column="desc" property="jobDesc"/>
+        <result column="job_bean_id" property="jobBeanId"/>
+        <result column="cron_expression" property="cronExpression"/>
+        <result column="create_time" property="createTime"/>
+        <result column="param_data" property="paramData"/>
+        <result column="status" property="status"/>
+        <result column="owner" property="owner"/>
+    </resultMap>
+
+    <sql id="flyerJobsColumn">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="jobName != null">job_name,</if>
+            <if test="appId != null">app_id,</if>
+            <if test="appCode != null">app_code,</if>
+            <if test="vhost != null">vhost,</if>
+            <if test="jobDesc != null">job_desc,</if>
+            <if test="jobBeanId != null">job_bean_id,</if>
+            <if test="cronExpression != null">cron_expression,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="paramData != null">param_data,</if>
+            <if test="status != null">status,</if>
+            <if test="owner != null">owner,</if>
+        </trim>
+    </sql>
+    <sql id="flyerJobsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="jobName != null">#{jobName},</if>
+            <if test="appId != null">#{appId},</if>
+            <if test="appCode != null">#{appCode},</if>
+            <if test="vhost != null">#{vhost},</if>
+            <if test="jobDesc != null">#{jobDesc},</if>
+            <if test="jobBeanId != null">#{jobBeanId},</if>
+            <if test="cronExpression != null">#{cronExpression},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="paramData != null">#{paramData},</if>
+            <if test="status != null">#{status},</if>
+            <if test="owner != null">#{owner},</if>
+        </trim>
+    </sql>
+    <sql id="flyerJobsBaseColumn">
+        <trim suffix="" suffixOverrides=",">
+            id,
+            job_name,
+            app_id,
+            app_code,
+            vhost,
+            job_desc,
+            job_bean_id,
+            cron_expression,
+            create_time,
+            param_data,
+            status,
+            owner,
+        </trim>
+    </sql>
+
+    <insert id="saveFlyerJobs" parameterType="com.flyer.job.domain.FlyerJobs"
+            useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into flyer_jobs (<include refid="flyerJobsColumn"/>)
+        values (<include refid="flyerJobsValue"/>)
+    </insert>
+
+    <update id="updateFlyerJobs" parameterType="com.flyer.job.domain.FlyerJobs">
+        update flyer_jobs
+        <set>
+            <if test="jobName != null">job_name=#{jobName},</if>
+            <if test="appId != null">app_id=#{appId},</if>
+            <if test="appCode != null">app_code=#{appCode},</if>
+            <if test="vhost != null">vhost=#{vhost},</if>
+            <if test="jobDesc != null">job_desc=#{jobDesc},</if>
+            <if test="jobBeanId != null">job_bean_id=#{jobBeanId},</if>
+            <if test="cronExpression != null">cron_expression=#{cronExpression},</if>
+            <if test="createTime != null">create_time=#{createTime},</if>
+            <if test="paramData != null">param_data=#{paramData},</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="owner != null">owner=#{owner},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="removeFlyerJobsById" parameterType="java.lang.Long">
+    	delete from flyer_jobs
+    	where id = #{id}
+    </delete>
+
+    <delete id="batchRemoveByIds">
+        delete from flyer_jobs
+        where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="findFlyerJobsById" parameterType="java.lang.Long" resultMap="flyerJobsMap">
+        select
+        <include refid="flyerJobsBaseColumn"/>
+        from flyer_jobs
+        where id = #{id}
+    </select>
+
+    <select id="findByJobBeanId" parameterType="java.lang.String" resultMap="flyerJobsMap">
+        select
+        <include refid="flyerJobsBaseColumn"/>
+        from flyer_jobs
+        where job_bean_id=#{jobBeanId}
+    </select>
+
+    <select id="searchPageList" resultMap="flyerJobsMap">
+        select
+        <include refid="flyerJobsBaseColumn"/>
+        from flyer_jobs
+        <where>
+            <if test="jobName != null and jobName!=''">
+                and job_name like #{jobName}
+            </if>
+            <if test="jobBeanId != null and jobBeanId!=''">
+                and job_bean_id like #{jobBeanId}
+            </if>
+            <if test="appCode != null and appCode!=''">
+                and app_code=#{appCode}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="listAll" resultMap="flyerJobsMap">
+        select
+        <include refid="flyerJobsBaseColumn"/>
+        from flyer_jobs
+    </select>
+
+</mapper>

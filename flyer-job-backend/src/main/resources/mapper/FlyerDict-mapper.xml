@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flyer.job.dao.FlyerDictDao">
+
+	<resultMap id="flyerDictMap" type="com.flyer.job.domain.FlyerDict">
+		<id column="id" property="id" />
+			<result column="id" property="id" />
+			<result column="field_type" property="fieldType" />
+			<result column="field_code" property="fieldCode" />
+			<result column="field_value" property="fieldValue" />
+			<result column="field_desc" property="fieldDesc" />
+			<result column="is_enabled" property="isEnabled" />
+			<result column="create_time" property="createTime" />
+			<result column="_timestamp" property="timestamp" />
+	</resultMap>
+	
+	<sql id ="flyerDictColumn">
+		<trim suffix="" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="fieldType != null">field_type,</if>
+			<if test="fieldCode != null">field_code,</if>
+			<if test="fieldValue != null">field_value,</if>
+			<if test="fieldDesc != null">field_desc,</if>
+			<if test="isEnabled != null">is_enabled,</if>
+			<if test="createTime != null">create_time,</if>
+		</trim>
+	</sql>
+	<sql id="flyerDictValue">
+		<trim suffix="" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="fieldType != null">#{fieldType},</if>
+			<if test="fieldCode != null">#{fieldCode},</if>
+			<if test="fieldValue != null">#{fieldValue},</if>
+			<if test="fieldDesc != null">#{fieldDesc},</if>
+			<if test="isEnabled != null">#{isEnabled},</if>
+			<if test="createTime != null">#{createTime},</if>
+		</trim>
+	</sql>
+	 <sql id="flyerDictBaseColumn">
+	 	<trim suffix="" suffixOverrides=",">
+				id,
+				field_type,
+				field_code,
+				field_value,
+				field_desc,
+				is_enabled,
+				create_time,
+				_timestamp,
+		</trim>
+    </sql>
+
+	<insert id="saveFlyerDict" parameterType="com.flyer.job.domain.FlyerDict" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="Long" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into flyer_dict (<include refid="flyerDictColumn"/>)
+		values (<include refid="flyerDictValue"/>)
+	</insert>
+
+	<update id="updateFlyerDict" parameterType="com.flyer.job.domain.FlyerDict">
+	 	update flyer_dict
+		<set>
+			<if test="fieldType != null">field_type=#{fieldType},</if>
+			<if test="fieldCode != null">field_code=#{fieldCode},</if>
+			<if test="fieldValue != null">field_value=#{fieldValue},</if>
+			<if test="fieldDesc != null">field_desc=#{fieldDesc},</if>
+			<if test="isEnabled != null">is_enabled=#{isEnabled},</if>
+			<if test="createTime != null">create_time=#{createTime},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<update id="updateFlyerDictByCode" parameterType="com.flyer.job.domain.FlyerDict">
+		update flyer_dict
+		<set>
+			<if test="fieldType != null">field_type=#{fieldType},</if>
+			<if test="fieldValue != null">field_value=#{fieldValue},</if>
+			<if test="fieldDesc != null">field_desc=#{fieldDesc},</if>
+			<if test="isEnabled != null">is_enabled=#{isEnabled},</if>
+			<if test="createTime != null">create_time=#{createTime},</if>
+		</set>
+		where field_code=#{fieldCode}
+	</update>
+
+	<delete id="removeFlyerDictById" parameterType="java.lang.Long">
+    	delete from flyer_dict
+    	where id = #{id}
+    </delete>
+
+    <select id="findFlyerDictById" parameterType="java.lang.Long" resultMap="flyerDictMap">
+          select <include refid="flyerDictBaseColumn"/>
+          from flyer_dict
+          where id = #{id}
+    </select>
+
+	<select id="findFlyerDictByCode" parameterType="java.lang.Long" resultMap="flyerDictMap">
+		select <include refid="flyerDictBaseColumn"/>
+		from flyer_dict
+		where field_code=#{fieldCode}
+	</select>
+
+
+</mapper>
