@@ -45,7 +45,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vancefantasy.github.io/flyer-job/docs/architecture/</guid>
-      <description> 架构图 说明  Metuunt non paene iniectis licuit Extemplo iugulum relictis reddidit caput Frustra adspiceres viae Non fluctibus civiliter pater procedit non Deos spumis ille aderam semper Stygios quantum Orgia hoc  </description>
+      <description> 架构图 说明  尽可能的轻量级，不依赖第三方有状态存储的组件(只依赖MySQL做任务持久化) 由quartz cluster保证任务高可用。 每一个job client都会和每一个server node建立socket通道。 server node可以扩容，心跳协议检测到版本号变化后会重建连接。 如果任务数量较大，可建立多个scheduler，然后对任务进行sharding。这也来自quartz官方的建议。  </description>
     </item>
     
     <item>

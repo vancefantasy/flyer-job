@@ -61,12 +61,11 @@
 <h2 id="说明">说明</h2>
 
 <ol>
-<li>Metuunt non paene iniectis licuit</li>
-<li>Extemplo iugulum relictis reddidit caput</li>
-<li>Frustra adspiceres viae</li>
-<li>Non fluctibus civiliter pater procedit non</li>
-<li>Deos spumis ille aderam semper Stygios quantum</li>
-<li>Orgia hoc</li>
+<li>尽可能的轻量级，不依赖第三方有状态存储的组件(只依赖MySQL做任务持久化)</li>
+<li>由quartz cluster保证任务高可用。</li>
+<li>每一个job client都会和每一个server node建立socket通道。</li>
+<li>server node可以扩容，心跳协议检测到版本号变化后会重建连接。</li>
+<li>如果任务数量较大，可建立多个scheduler，然后对任务进行sharding。这也来自quartz官方的建议。</li>
 </ol>
 </article>
     </div>
