@@ -1,0 +1,20 @@
+# hugo server --themesDir ...
+
+baseURL: https://example.com
+title: Hugo Book
+theme: hugo-book
+
+# Book configuration
+disablePathToLower: true
+
+params:
+  # show or hide table of contents for page
+  BookShowToC: true
+
+  # Set bundle to render side menu
+  # if not specified file structure and weights will be used
+  BookMenuBundle: /menu  
+
+  # specify section of content to render as menu
+  # if bookMenuBundle is not set, 'docs' is value by default
+  BookSection: docs

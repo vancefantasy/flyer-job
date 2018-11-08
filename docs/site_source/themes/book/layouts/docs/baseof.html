@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{{- partial "docs/shared" -}}
+<html>
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main>
+
+    <aside class="menu fixed">
+      <nav role="navigation">
+        {{ partial "docs/brand" . }}
+        {{ partial "docs/inject/menu-before" . }}
+        
+        {{ if .Site.Params.BookMenuBundle }}
+          {{ partial "docs/menu-bundle" . }}
+        {{ else }}
+          {{ partial "docs/menu-filetree" . }}
+        {{ end }}
+      
+        {{ partial "docs/inject/menu-after" . }}
+      </nav>
+    </aside>
+
+    <div class="content">
+      <header>
+        {{ partial "docs/mobile-header" . }}
+      </header>
+      <article class="markdown">
+        {{- .Content -}}
+      </article>
+    </div>
+
+    {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
+    {{ if and ($showToC) (.Page.TableOfContents) }}
+    <aside class="toc fixed">
+      {{ partial "docs/toc" . }}
+    </aside>
+    {{ end }}
+
+  </main>
+  {{ partial "docs/inject/body" . }}
+</body>
+</html>
