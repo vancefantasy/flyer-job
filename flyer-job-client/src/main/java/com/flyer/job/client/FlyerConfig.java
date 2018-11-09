@@ -236,17 +236,11 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
 
     @Override
     public String toString() {
-        return "\n appCode: " + this.appCode
-            + "\n disable: " + this.disable
-            + "\n depend: " + this.depend
-            + "\n servers: " + this.servers
-            + "\n vhost: " + this.vhost
-            + "\n corePoolSize: " + this.corePoolSize
-            + "\n maxPoolSize: " + this.maxPoolSize
+        return "\n appCode: " + this.appCode + "\n disable: " + this.disable + "\n depend: "
+            + this.depend + "\n servers: " + this.servers + "\n vhost: " + this.vhost
+            + "\n corePoolSize: " + this.corePoolSize + "\n maxPoolSize: " + this.maxPoolSize
             + "\n keepAliveTime: " + this.keepAliveTime;
 
     }
-
-
 
 }

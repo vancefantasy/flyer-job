@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>架构 | 首页</title>
+<title>客户端配置 | 首页</title>
 
 <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="/flyer-job/normalize.min.css">
@@ -54,23 +54,103 @@
         <label for="menu-control">
   <img src="https://vancefantasy.github.io/flyer-job//svg/menu.svg" />
 </label>
-<strong>架构</strong>
+<strong>客户端配置</strong>
       </header>
       <article class="markdown">
 
-<h2 id="架构图">架构图</h2>
+<h1 id="客户端配置">客户端配置</h1>
 
-<p><img src="../../imgs/flyerjob_architecture.png" alt="arch" /></p>
+<h2 id="配置列表">配置列表</h2>
 
-<h2 id="说明">说明</h2>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>类型</th>
+<th>配置名</th>
+<th>是否必选</th>
+<th>备注</th>
+</tr>
+</thead>
 
-<ol>
-<li>尽可能的轻量级，不依赖第三方有状态存储的组件(只依赖MySQL做任务持久化)</li>
-<li>由quartz cluster保证任务高可用。</li>
-<li>每一个job client都会和每一个server node建立socket通道。</li>
-<li>server node可以扩容，心跳协议检测到版本号变化后会重建连接。</li>
-<li>如果任务数量较大，可建立多个scheduler，然后对任务进行sharding。这也来自quartz官方的建议。</li>
-</ol>
+<tbody>
+<tr>
+<td>appCode</td>
+<td>string</td>
+<td>应用编码</td>
+<td>是</td>
+<td>例：my-app</td>
+</tr>
+
+<tr>
+<td>disable</td>
+<td>boolean</td>
+<td>是否开启flyerjob</td>
+<td>是</td>
+<td>true关闭 false开启，默认false（开启）</td>
+</tr>
+
+<tr>
+<td>depend</td>
+<td>boolean</td>
+<td>是否强依赖</td>
+<td>否</td>
+<td>true是 false否，默认true(强依赖)</td>
+</tr>
+
+<tr>
+<td>servers</td>
+<td>string</td>
+<td>flyer job服务器</td>
+<td>是</td>
+<td>例：1.1.1.1:20180,2.2.2.2:20180</td>
+</tr>
+
+<tr>
+<td>vhost</td>
+<td>string</td>
+<td>vhost</td>
+<td>否</td>
+<td>环境设置</td>
+</tr>
+
+<tr>
+<td>corePoolSize</td>
+<td>int</td>
+<td>核心线程数</td>
+<td>否</td>
+<td>默认值：3</td>
+</tr>
+
+<tr>
+<td>maxPoolSize</td>
+<td>int</td>
+<td>最大线程数</td>
+<td>否</td>
+<td>默认值：10</td>
+</tr>
+
+<tr>
+<td>keepAliveTime</td>
+<td>int</td>
+<td>线程空闲超时时间</td>
+<td>否</td>
+<td>单位：s，默认值：300s</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="进一步解释">进一步解释</h2>
+
+<ul>
+<li><p>disable</p></li>
+
+<li><p>depend</p></li>
+
+<li><p>servers</p></li>
+
+<li><p>vhost</p></li>
+</ul>
 </article>
     </div>
 
@@ -79,10 +159,10 @@
     <aside class="toc fixed">
       <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#客户端配置">客户端配置</a>
 <ul>
-<li><a href="#架构图">架构图</a></li>
-<li><a href="#说明">说明</a></li>
+<li><a href="#配置列表">配置列表</a></li>
+<li><a href="#进一步解释">进一步解释</a></li>
 </ul></li>
 </ul>
 </nav>

@@ -29,6 +29,15 @@
     </item>
     
     <item>
+      <title>客户端配置</title>
+      <link>https://vancefantasy.github.io/flyer-job/docs/clientconfig/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vancefantasy.github.io/flyer-job/docs/clientconfig/</guid>
+      <description>客户端配置 配置列表    配置项 类型 配置名 是否必选 备注     appCode string 应用编码 是 例：my-app   disable boolean 是否开启flyerjob 是 true关闭 false开启，默认false（开启）   depend boolean 是否强依赖 否 true是 false否，默认true(强依赖)   servers string flyer job服务器 是 例：1.1.1.1:20180,2.2.2.2:20180   vhost string vhost 否 环境设置   corePoolSize int 核心线程数 否 默认值：3   maxPoolSize int 最大线程数 否 默认值：10   keepAliveTime int 线程空闲超时时间 否 单位：s，默认值：300s    进一步解释  disable</description>
+    </item>
+    
+    <item>
       <title>接入一个任务</title>
       <link>https://vancefantasy.github.io/flyer-job/docs/firstjob/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -63,7 +72,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vancefantasy.github.io/flyer-job/docs/communicationprotocol/</guid>
-      <description> 协议时序图 协议设计 总体结构    部分 类型 长度     起始 固定 00 01 2   包长 int 4   协议号 int 4   协议版本 short 2   包编号 long 8   包体 byte[] { &amp;hellip; }    1000 //null body  1001    字段 字段类型 字段说明     serverVersion int 服务器配置版本号   servers string 服务器配置    1002    字段 字段类型 字段说明     appCode string 应用信息   jobs string 任务信息：jobs,jobs2   req byte 请求标记:00    1003    字段 字段类型 字段说明     resp byte 响应标记:01    1004    字段 字段类型 字段说明     appCode string 应用信息   req byte 请求标记:00    1005    字段 字段类型 字段说明     resp byte 响应标记:01   serverVersion int 服务端配置版本号    1006    字段 字段类型 字段说明     jobBeanId string 任务beanId   paramData string 参数信息    1007    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 提交结果0 提交成功 1 提交失败    1008    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 执行结果0 执行成功 1 执行失败 2 任务取消   logStr string 执行日志    1009    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 处理结果0 处理成功 1 处理失败    1010    字段 字段类型 字段说明     jobBeanId string 任务beanId    1011    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 取消结果0 取消成功 1 取消失败    1012 //todo  1013 //todo  </description>
+      <description> 协议时序图 协议结构    部分 类型 长度     起始 固定 00 01 2   包长 int 4   协议号 int 4   协议版本 short 2   包编号 long 8   包体 byte[] { &amp;hellip; }    协议body详细 1000 //null body  1001    字段 字段类型 字段说明     serverVersion int 服务器配置版本号   servers string 服务器配置    1002    字段 字段类型 字段说明     appCode string 应用信息   jobs string 任务信息：jobs,jobs2   req byte 请求标记:00    1003    字段 字段类型 字段说明     resp byte 响应标记:01    1004    字段 字段类型 字段说明     appCode string 应用信息   req byte 请求标记:00    1005    字段 字段类型 字段说明     resp byte 响应标记:01   serverVersion int 服务端配置版本号    1006    字段 字段类型 字段说明     jobBeanId string 任务beanId   paramData string 参数信息    1007    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 提交结果0 提交成功 1 提交失败    1008    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 执行结果0 执行成功 1 执行失败 2 任务取消   logStr string 执行日志    1009    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 处理结果0 处理成功 1 处理失败    1010    字段 字段类型 字段说明     jobBeanId string 任务beanId    1011    字段 字段类型 字段说明     jobBeanId string 任务beanId   result byte 取消结果0 取消成功 1 取消失败    1012 //todo  1013 //todo  </description>
     </item>
     
     <item>
@@ -72,14 +81,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vancefantasy.github.io/flyer-job/docs/deployguide/</guid>
-      <description> 部署指南 前置环境  安装MySQL
-(过程略)
- 准备数据库
-//创建DB CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci; //导入建表脚本 cat /path/to/flyer_job.sql | mysql -uroot -pxxx //创建用户 create user flyer_job_w identified by &#39;123456&#39;; //权限 grant all privileges on flyer_job.* to flyer_job_w; flush privileges;   获取软件安装包  修改启动脚本
+      <description> 部署指南 数据库  安装MySQL
+(略)  准备数据库
+//创建DB CREATE DATABASE flyer_job CHARACTER SET utf8 COLLATE utf8_general_ci; //导入建表脚本 cat /path/to/flyer_job.sql | mysql -uroot -pxxx //创建用户 create user flyer_job_w identified by &#39;123456&#39;; //权限 grant all privileges on flyer_job.* to flyer_job_w; flush privileges;   获取安装包  修改启动脚本
 //
  启动
 //
-  静态资源单独部署(可选) </description>
+  单独部署静态资源(可选) </description>
     </item>
     
   </channel>

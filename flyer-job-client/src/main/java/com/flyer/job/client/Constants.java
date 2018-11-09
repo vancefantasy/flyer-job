@@ -1,7 +1,7 @@
 package com.flyer.job.client;
 
 /**
- * 常量key
+ * key常量
  */
 public interface Constants {
     String keyOfAppCode = "${flyer.appCode}";
