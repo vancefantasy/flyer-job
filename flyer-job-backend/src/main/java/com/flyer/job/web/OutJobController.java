@@ -1,7 +1,14 @@
 package com.flyer.job.web;
 
+import com.flyer.job.common.BaseController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
- * Created by jianying.li on 2018/1/13.
+ * 外部提交任务controller
  */
-public class OutJobController {
+@RestController
+@RequestMapping("outjob")
+public class OutJobController extends BaseController {
+
 }

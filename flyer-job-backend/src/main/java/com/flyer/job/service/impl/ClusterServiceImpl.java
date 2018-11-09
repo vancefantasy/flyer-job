@@ -15,9 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by jianying.li on 2018/3/8.
- */
 @Service
 public class ClusterServiceImpl implements ClusterService {
 
@@ -27,8 +24,8 @@ public class ClusterServiceImpl implements ClusterService {
     @Override
     public RestResponse show() {
         FlyerDict dict = flyerDictDao.findFlyerDictByCode(codeOfSettingsInDict);
-        ServerConfig config  = null;
-        if (dict!= null){
+        ServerConfig config = null;
+        if (dict != null) {
             config = JsonMapper.INSTANCE.fromJson(dict.getFieldValue(), ServerConfig.class);
             config.setLastUpdateTime(dict.getTimestamp());
         }
@@ -39,7 +36,7 @@ public class ClusterServiceImpl implements ClusterService {
     public RestResponse save(String servers) {
         FlyerDict dict = flyerDictDao.findFlyerDictByCode(codeOfSettingsInDict);
         FlyerDict newOne = new FlyerDict();
-        //新建
+        //for new
         if (dict == null) {
             newOne.setFieldCode(codeOfSettingsInDict);
             newOne.setCreateTime(new Date());
@@ -52,7 +49,7 @@ public class ClusterServiceImpl implements ClusterService {
             newOne.setFieldValue(JsonMapper.INSTANCE.toJson(config));
 
             flyerDictDao.saveFlyerDict(newOne);
-        }//更新
+        }//for update
         else {
             ServerConfig config =
                 JsonMapper.INSTANCE.fromJson(dict.getFieldValue(), ServerConfig.class);
@@ -67,6 +64,7 @@ public class ClusterServiceImpl implements ClusterService {
         return RestResponse.success().build();
     }
 
+    //版本号缓存
     LoadingCache<String, ServerConfig> serverConfigCache =
         CacheBuilder.newBuilder().maximumSize(1).refreshAfterWrite(1, TimeUnit.MINUTES)
             .build(new CacheLoader<String, ServerConfig>() {

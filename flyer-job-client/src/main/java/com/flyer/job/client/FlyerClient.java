@@ -18,8 +18,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * flyer客户端
  * 负责维护client与每个server的通道连接
- * <p>
- * Created by jianying.li on 2018/1/31.
  */
 public class FlyerClient {
 
@@ -91,9 +89,9 @@ public class FlyerClient {
                     currentClientVersion = currentServerVersion;
                     currentLocalServers = currentRemoteServers;
 
-                    //sleep 3s,等关闭连接
+                    //sleep 等关闭连接
                     try {
-                        Thread.sleep(3 * 1000);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         log.error("refeshConfig InterruptedException", e);
                     }
@@ -139,8 +137,8 @@ public class FlyerClient {
             int serverVersion = readBuffer.readInt();
             String servers = readBuffer.readString();
 
-            log.info("pull flyer server config success, serverVersion : {}, servers : {}",
-                serverVersion, servers);
+            log.info("pull server config success, serverVersion : {}, servers : {}", serverVersion,
+                servers);
             currentServerVersion = serverVersion;
             currentRemoteServers = servers;
 
@@ -167,9 +165,6 @@ public class FlyerClient {
     }
 
     public void start() {
-
-        log.debug("start begin");
-
         String[] serverArr = currentLocalServers.split(",");
 
         for (String server : serverArr) {

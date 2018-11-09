@@ -22,10 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.security.MessageDigest;
 import java.util.*;
 
-
-/**
- * 2018-01-24 14:54:12<br/>
- */
 @Service
 public class FlyerUsersServiceImpl implements FlyerUsersService {
 

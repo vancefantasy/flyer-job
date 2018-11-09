@@ -1,15 +1,15 @@
 package com.flyer.job.client;
 
 /**
- * Created by jianying.li on 2018/2/7.
+ * 常量key
  */
 public interface Constants {
-    String keyOfFlyerServer = "${flyer.servers}";
     String keyOfAppCode = "${flyer.appCode}";
+    String keyOfDisable = "${flyer.disable}";
+    String keyOfDepend = "${flyer.depend}";
+    String keyOfFlyerServer = "${flyer.servers}";
+    String keyOfVhost = "${flyer.vhost}";
     String keyOfCorePoolSize = "${flyer.corePoolSize}";
     String keyOfMaxPoolSize = "${flyer.maxPoolSize}";
     String keyOfKeepAliveTime = "${flyer.keepAliveTime}";
-    String keyOfDepend = "${flyer.depend}";
-    String keyOfVhost = "${flyer.vhost}";
-    String keyOfDisable = "${flyer.disable}";
 }

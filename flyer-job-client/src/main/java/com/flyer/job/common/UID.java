@@ -9,7 +9,6 @@ import java.util.Random;
 
 /**
  * 唯一号生成工具
- * Created by jianying.li on 2017/10/11.
  */
 public class UID {
 

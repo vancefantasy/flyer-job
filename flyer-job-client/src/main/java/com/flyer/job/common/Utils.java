@@ -3,11 +3,8 @@ package com.flyer.job.common;
 import com.flyer.job.ProtocolConstants;
 import org.xsocket.connection.INonBlockingConnection;
 
-import java.util.Iterator;
-import java.util.Map;
-
 /**
- * Created by jianying.li on 2018/2/4.
+ * 内部工具类
  */
 public class Utils {
 
@@ -15,8 +12,8 @@ public class Utils {
         return str.getBytes().length + 2;
     }
 
-
     public static byte[] wrapHeader(byte[] body, int protocolId, long packetId) {
+        //head(20) + body(?)
         int bodyLength = body.length;
         ByteWriteBuffer bw = new ByteWriteBuffer(20 + bodyLength);
         bw.writeShort((short) 1);
@@ -28,12 +25,6 @@ public class Utils {
         return bw.getData();
     }
 
-    /**
-     * 格式如：remoteAddress:remotePort
-     *
-     * @param nbc
-     * @return
-     */
     public static String getServerStr(INonBlockingConnection nbc) {
         return nbc.getRemoteAddress().getHostAddress() + ":" + nbc.getRemotePort();
     }

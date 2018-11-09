@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 自定义任务执行器，使用ThreadPoolExecutor
- * Created by jianying.li on 2018/2/4.
  */
 public class JobExecutor extends ThreadPoolExecutor {
 

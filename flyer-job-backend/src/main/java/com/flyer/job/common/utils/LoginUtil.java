@@ -8,10 +8,11 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by jianying.li on 2018/10/30.
+ * 登录相关工具
  */
 public class LoginUtil {
 
+    //256位key
     private static byte[] aesKey =
         {-33, -23, 40, -102, 24, 126, -81, -16, 47, 21, -28, 125, 66, 80, -14, 105, 8, -84, 0, 116,
             -111, 100, -47, -13, 40, 80, -106, 33, 90, -96, 65, 97};
@@ -31,7 +32,6 @@ public class LoginUtil {
         byte[] arr = EncodeUtil.decodeHex(ciphertext);
         return CryptoUtil.aesDecrypt(arr, aesKey);
     }
-
 
     public static boolean checkSession(String text) {
         String[] arr = text.split("\\|");
@@ -57,10 +57,10 @@ public class LoginUtil {
         }
         return true;
     }
-    public static void main(String[] args) throws Exception {
-        String str = encrypt("admin", "123456");
-        System.out.println(str);
-        System.out.println(decrypt(str));
-        System.out.println(checkSession("admin|123456|1540883294"));
+
+    public static String getUserFromToken(String token){
+        String text = LoginUtil.decrypt(token);
+        return text.split("\\|")[0];
     }
+
 }

@@ -19,7 +19,6 @@ import java.util.Map;
 
 /**
  * Common Controller
- * Created by jianying.li on 2018/9/14.
  */
 @RestController
 public class CommonController extends BaseController {
@@ -29,7 +28,7 @@ public class CommonController extends BaseController {
      *
      * @return
      */
-    @GetMapping(value = "healthCheck")
+    @GetMapping(value = "healthcheck")
     public RestResponse healthCheck() {
         return RestResponse.success().build();
     }
@@ -41,7 +40,7 @@ public class CommonController extends BaseController {
      * @param level
      * @return
      */
-    @GetMapping(value = "setLevel")
+    @GetMapping(value = "setlevel")
     public RestResponse setLoggerLevel(String logger, String level) {
         if (StringUtils.isBlank(logger) || StringUtils.isBlank(level)) {
             BizException.throwOut(ErrorEnum.PARAMETER_ILLEGAL);

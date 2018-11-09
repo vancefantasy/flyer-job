@@ -6,21 +6,20 @@ import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.util.StringValueResolver;
 
 /**
- * 客户端配置
- * Created by jianying.li on 2018/1/31.
+ * flyer client config
  */
 public class FlyerConfig implements EmbeddedValueResolverAware {
 
     private final Logger log = LoggerFactory.getLogger(FlyerConfig.class);
 
     /**
-     * flyer服务器连接串（必填）
+     * flyer服务器连接串（required）
      * 例如:1.1.1.1:20180,2.2.2.2:20180
      */
     private String servers;
 
     /**
-     * 应用编码（必填）
+     * 应用编码（required）
      */
     private String appCode;
 
@@ -118,7 +117,7 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
         this.vhost = vhost;
     }
 
-    public boolean isDisable() {
+    public boolean getDisable() {
         return disable;
     }
 
@@ -132,28 +131,24 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
     }
 
     public void setConfig() {
-
-        String flyerServers = stringValueResolver.resolveStringValue(Constants.keyOfFlyerServer);
-        if (!eq(Constants.keyOfFlyerServer, flyerServers) && flyerServers != null
-            && flyerServers.trim() != "") {
+        String flyerServers = resolvePropertiesValue(Constants.keyOfFlyerServer);
+        if (configLegal(Constants.keyOfFlyerServer, flyerServers)) {
             setServers(flyerServers);
         } else {
             log.error("flyer.server cannot be null");
             throw new RuntimeException("flyer.server cannot be null");
         }
 
-        String appCode = stringValueResolver.resolveStringValue(Constants.keyOfAppCode);
-        if (!eq(Constants.keyOfAppCode, appCode) && appCode != null && appCode.trim() != "") {
+        String appCode = resolvePropertiesValue(Constants.keyOfAppCode);
+        if (configLegal(Constants.keyOfAppCode, appCode)) {
             setAppCode(appCode);
         } else {
             log.error("flyer.appCode cannot be null");
             throw new RuntimeException("flyer.appCode cannot be null");
         }
 
-        String corePoolSizeStr =
-            stringValueResolver.resolveStringValue(Constants.keyOfCorePoolSize);
-        if (!eq(Constants.keyOfCorePoolSize, corePoolSizeStr) && corePoolSizeStr != null
-            && corePoolSizeStr.trim() != "") {
+        String corePoolSizeStr = resolvePropertiesValue(Constants.keyOfCorePoolSize);
+        if (configLegal(Constants.keyOfCorePoolSize, corePoolSizeStr)) {
             int corePoolSize;
             try {
                 corePoolSize = Integer.parseInt(corePoolSizeStr);
@@ -162,12 +157,11 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
                 log.error("illegel flyer.corePoolSize value : {}", corePoolSizeStr, e);
             }
         } else {
-            log.warn("flyer.corePoolSize was not set, use default value");
+            log.info("flyer.corePoolSize was not set, use default value");
         }
 
-        String maxPoolSizeStr = stringValueResolver.resolveStringValue(Constants.keyOfMaxPoolSize);
-        if (!eq(Constants.keyOfMaxPoolSize, maxPoolSizeStr) && maxPoolSizeStr != null
-            && maxPoolSizeStr.trim() != "") {
+        String maxPoolSizeStr = resolvePropertiesValue(Constants.keyOfMaxPoolSize);
+        if (configLegal(Constants.keyOfMaxPoolSize, maxPoolSizeStr)) {
             int maxPoolSize;
             try {
                 maxPoolSize = Integer.parseInt(maxPoolSizeStr);
@@ -176,13 +170,11 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
                 log.error("illegel flyer.maxPoolSize value : {}", maxPoolSizeStr, e);
             }
         } else {
-            log.warn("flyer.maxPoolSize was not set, use default value");
+            log.info("flyer.maxPoolSize was not set, use default value");
         }
 
-        String keepAliveTimeStr =
-            stringValueResolver.resolveStringValue(Constants.keyOfKeepAliveTime);
-        if (!eq(Constants.keyOfKeepAliveTime, keepAliveTimeStr) && keepAliveTimeStr != null
-            && keepAliveTimeStr.trim() != "") {
+        String keepAliveTimeStr = resolvePropertiesValue(Constants.keyOfKeepAliveTime);
+        if (configLegal(Constants.keyOfKeepAliveTime, keepAliveTimeStr)) {
             int keepAliveTime;
             try {
                 keepAliveTime = Integer.parseInt(keepAliveTimeStr);
@@ -191,45 +183,70 @@ public class FlyerConfig implements EmbeddedValueResolverAware {
                 log.error("illegel flyer.keepAliveTime value : {}", keepAliveTimeStr, e);
             }
         } else {
-            log.warn("flyer.keepAliveTime was not set, use default value");
+            log.info("flyer.keepAliveTime was not set, use default value");
         }
 
-
-        String dependStr = stringValueResolver.resolveStringValue(Constants.keyOfDepend);
-        if (!eq(Constants.keyOfDepend, dependStr) && dependStr != null && dependStr.trim() != "") {
+        String dependStr = resolvePropertiesValue(Constants.keyOfDepend);
+        if (configLegal(Constants.keyOfDepend, dependStr)) {
             try {
                 setDepend(Boolean.valueOf(dependStr));
             } catch (NumberFormatException e) {
                 log.error("illegel flyer.depend value : {}", dependStr, e);
             }
         } else {
-            log.warn("flyer.dependStr was not set, use default value");
+            log.info("flyer.dependStr was not set, use default value");
         }
 
-        String vhost = stringValueResolver.resolveStringValue(Constants.keyOfVhost);
-        if (!eq(Constants.keyOfVhost, vhost) && vhost != null && vhost.trim() != "") {
+        String vhost = resolvePropertiesValue(Constants.keyOfVhost);
+        if (configLegal(Constants.keyOfVhost, vhost)) {
             setVhost(vhost);
         } else {
-            log.warn("flyer.vhost was not set, use default value");
+            log.info("flyer.vhost was not set, use default value");
         }
 
-        String disableStr = stringValueResolver.resolveStringValue(Constants.keyOfDisable);
-        if (!eq(Constants.keyOfDisable, disableStr) && disableStr != null && disableStr.trim() != "") {
+        String disableStr = resolvePropertiesValue(Constants.keyOfDisable);
+        if (configLegal(Constants.keyOfDisable, disableStr)) {
             setDisable(Boolean.valueOf(disableStr));
         } else {
-            log.warn("flyer.disable was not set, use default value");
+            log.info("flyer.disable was not set, use default value");
         }
+    }
 
+    private String resolvePropertiesValue(String key) {
+        String vaule = null;
+        try {
+            vaule = stringValueResolver.resolveStringValue(key);
+        } catch (IllegalArgumentException iae) {
+            //ignore
+        }
+        return vaule;
+    }
+
+    private boolean configLegal(String key, String value) {
+        return !eq(Constants.keyOfDisable, value) && notNull(value);
     }
 
     private boolean eq(String source, String resolveValue) {
         return source.equals(resolveValue);
     }
 
+    private boolean notNull(String str) {
+        return str != null && str.trim() != "";
+    }
+
     @Override
     public String toString() {
-        return "servers: " + this.servers + ",appCode: " + this.appCode + ",corePoolSize: "
-            + this.corePoolSize + ",maxPoolSize: " + this.maxPoolSize + ",keepAliveTime: "
-            + this.keepAliveTime + ",depend: " + this.depend + ",vhost: " + this.vhost;
+        return "\n appCode: " + this.appCode
+            + "\n disable: " + this.disable
+            + "\n depend: " + this.depend
+            + "\n servers: " + this.servers
+            + "\n vhost: " + this.vhost
+            + "\n corePoolSize: " + this.corePoolSize
+            + "\n maxPoolSize: " + this.maxPoolSize
+            + "\n keepAliveTime: " + this.keepAliveTime;
+
     }
+
+
+
 }

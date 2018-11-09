@@ -2,12 +2,9 @@ package com.flyer.job.domain;
 
 import java.io.Serializable;
 
-/**
- * 2018-01-24 14:54:12<br/>
- */
 public class FlyerApps implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8096944474404461693L;
 
     /**
      * 自增id

@@ -3,9 +3,6 @@ package com.flyer.job.constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by jianying.li on 2018/2/27.
- */
 public enum LogLevel {
 
     INFO(1), WARN(2), ERROR(3);

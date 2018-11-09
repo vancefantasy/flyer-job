@@ -12,10 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-
-/**
- * 2018-01-24 14:54:12<br/>
- */
 @Service
 public class FlyerAppsServiceImpl implements FlyerAppsService {
 

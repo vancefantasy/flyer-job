@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * global exception handler for controller
- * <p>
- * Created by jianying.li on 2018/9/16.
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {

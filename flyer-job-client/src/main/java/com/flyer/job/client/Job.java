@@ -1,12 +1,12 @@
 package com.flyer.job.client;
 
 /**
- * Created by jianying.li on 2018/2/3.
+ * flyer job 接口
  */
 public interface Job {
 
     /**
-     * 应用端实现此方法，定义自己的业务逻辑
+     * 应用端实现此方法，编写自己的业务逻辑
      *
      * @param param
      * @throws InterruptedException

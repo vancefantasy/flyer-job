@@ -22,7 +22,6 @@ import java.util.concurrent.CountDownLatch;
  * flyer_jobs_log表每个任务最多保留5000条数据，最少保留4500条
  * <p>
  * 调度策略，每天凌晨2:00开始运行
- * Created by jianying.li on 2018/4/27.
  */
 public class ClearLogJob implements Job {
 

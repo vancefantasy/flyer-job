@@ -3,9 +3,6 @@ package com.flyer.job.service;
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.domain.FlyerApps;
 
-/**
- * 2018-01-24 14:54:12 <br/>
- */
 public interface FlyerAppsService {
 
     RestResponse saveFlyerApps(FlyerApps flyerApps);

@@ -19,7 +19,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>io.github.vancefantasy</groupId>
 			<artifactId>flyer-job-client</artifactId>
@@ -58,5 +57,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

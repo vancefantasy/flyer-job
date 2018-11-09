@@ -1,13 +1,9 @@
 package com.flyer.job.common.interceptor;
 
-
 import com.flyer.job.common.RestResponse;
 
 import java.util.Map;
 
-/**
- * Created by jianying.li on 2018/9/16.
- */
 public class HttpLog {
 
     private Map general;

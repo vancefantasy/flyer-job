@@ -2,7 +2,6 @@ package com.flyer.job.common;
 
 /**
  * 通用返回数据格式
- * Created by jianying.li on 2018/1/28.
  */
 public class RestResponse {
 

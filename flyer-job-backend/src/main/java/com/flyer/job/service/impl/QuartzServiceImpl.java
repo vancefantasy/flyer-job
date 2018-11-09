@@ -16,9 +16,6 @@ import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-/**
- * Created by jianying.li on 2018/1/30.
- */
 @Service
 public class QuartzServiceImpl implements QuartzService {
 
@@ -29,7 +26,6 @@ public class QuartzServiceImpl implements QuartzService {
 
     @Autowired
     private Scheduler scheduler;
-
 
     @Override
     public void scheduleJob(long jobId) {
@@ -106,16 +102,12 @@ public class QuartzServiceImpl implements QuartzService {
                 JobDetail jobDetail = newJob(InternalJob.class).withIdentity(name, group)
                     .usingJobData(FlyerConstants.dataKey, JsonMapper.INSTANCE.toJson(flyerJobs))
                     .storeDurably(true).build();
-
                 //将任务添加至调度器
                 scheduler.addJob(jobDetail, false);
-
                 scheduler.triggerJob(jobDetail.getKey(), jobDataMap);
             }
         } catch (Exception e) {
             log.info("triggerJob error, jobId : {}", jobId, e);
         }
-
-
     }
 }

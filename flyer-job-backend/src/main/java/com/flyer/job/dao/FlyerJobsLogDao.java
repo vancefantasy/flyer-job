@@ -1,13 +1,9 @@
 package com.flyer.job.dao;
 
-
 import com.flyer.job.domain.FlyerJobsLog;
 
 import java.util.List;
 
-/**
- * 2018-01-24 14:54:12<br/>
- */
 public interface FlyerJobsLogDao {
 
     Integer saveFlyerJobsLog(FlyerJobsLog flyerJobsLog);

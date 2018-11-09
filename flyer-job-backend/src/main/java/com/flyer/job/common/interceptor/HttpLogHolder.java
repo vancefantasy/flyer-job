@@ -2,9 +2,7 @@ package com.flyer.job.common.interceptor;
 
 import org.springframework.core.NamedThreadLocal;
 
-/**
- * Created by jianying.li on 2018/9/16.
- */
+
 public class HttpLogHolder {
     private static NamedThreadLocal<HttpLog> threadLocal =
         new NamedThreadLocal<>("HttpLogHolder");

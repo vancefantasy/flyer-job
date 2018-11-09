@@ -5,7 +5,7 @@ import org.xsocket.connection.INonBlockingConnection;
 import java.util.Date;
 
 /**
- * Created by jianying.li on 2018/1/31.
+ * 连接信息
  */
 public class FlyerConnection {
 

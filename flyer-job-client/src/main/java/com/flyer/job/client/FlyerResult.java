@@ -2,7 +2,6 @@ package com.flyer.job.client;
 
 /**
  * 任务执行结果
- * Created by jianying.li on 2018/2/4.
  */
 public class FlyerResult {
 

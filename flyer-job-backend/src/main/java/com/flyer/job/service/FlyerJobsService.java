@@ -1,14 +1,10 @@
 package com.flyer.job.service;
 
-
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.domain.FlyerJobs;
 
 import java.util.List;
 
-/**
- * 2018-01-24 14:54:12 <br/>
- */
 public interface FlyerJobsService {
 
     RestResponse saveFlyerJobs(FlyerJobs flyerJobs);

@@ -13,7 +13,6 @@ import java.util.Properties;
 
 /**
  * Quartz 配置类
- * Created by jianying.li on 2018/1/28.
  */
 @Configuration
 public class QuartzConfig {

@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * Created by jianying.li on 2018/9/16.
- */
 public class ControllerInterceptor extends HandlerInterceptorAdapter {
 
     @Override

@@ -1,8 +1,5 @@
 package com.flyer.job.constants;
 
-/**
- * Created by jianying.li on 2018/1/30.
- */
 public interface FlyerConstants {
 
     String dataKey = "flyerJobs";

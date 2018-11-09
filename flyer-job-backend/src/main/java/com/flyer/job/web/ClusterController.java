@@ -1,5 +1,6 @@
 package com.flyer.job.web;
 
+import com.flyer.job.common.BaseController;
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.service.ClusterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by jianying.li on 2018/3/8.
+ * 集群设置controller
  */
 @RestController
 @RequestMapping("cluster")
-public class ClusterController {
+public class ClusterController extends BaseController {
 
     @Autowired
     private ClusterService clusterService;

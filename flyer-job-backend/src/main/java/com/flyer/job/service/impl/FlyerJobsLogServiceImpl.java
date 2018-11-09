@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * 2018-01-24 14:54:12<br/>
- */
 @Service
 public class FlyerJobsLogServiceImpl implements FlyerJobsLogService {
 

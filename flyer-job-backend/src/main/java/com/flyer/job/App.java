@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.servlet.ServletContext;
 
 /**
- * Created by jianying.li on 2018/10/22.
+ * flyer job 入口
  */
 @SpringBootApplication
 @EnableAutoConfiguration

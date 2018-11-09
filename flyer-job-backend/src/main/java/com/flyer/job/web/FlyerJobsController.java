@@ -1,5 +1,6 @@
 package com.flyer.job.web;
 
+import com.flyer.job.common.BaseController;
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.domain.FlyerJobs;
 import com.flyer.job.service.FlyerJobsService;
@@ -8,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by jianying.li on 2018/1/18.
+ * 任务管理controller
  */
 @RestController
-@RequestMapping("flyerJob")
-public class FlyerJobsController {
+@RequestMapping("flyerjob")
+public class FlyerJobsController extends BaseController {
 
     @Autowired
     private FlyerJobsService flyerJobsService;
@@ -50,10 +52,8 @@ public class FlyerJobsController {
     }
 
     @RequestMapping(value = "runnow")
-    public RestResponse runnow(Long jobId, String connId) {
-        //fixme
-        String operateUser = "jiangying.li";
-        return flyerJobsService.runOnce(jobId, connId, operateUser);
+    public RestResponse runnow(HttpServletRequest request, Long jobId, String connId) {
+        return flyerJobsService.runOnce(jobId, connId, getLoginUser(request));
     }
 
     @RequestMapping(value = "clients")
@@ -62,10 +62,8 @@ public class FlyerJobsController {
     }
 
     @RequestMapping(value = "cancel")
-    public RestResponse cancel(long id) {
-        //fixme
-        String operateUser = "jianying.li";
-        return flyerJobsService.cancelJob(id, operateUser);
+    public RestResponse cancel(HttpServletRequest request, long id) {
+        return flyerJobsService.cancelJob(id, getLoginUser(request));
     }
 
 }

@@ -20,6 +20,4 @@ logs/
 
 # static resources
 flyer-job-backend/src/main/resources/public
-
 flyer-job-frontend/node_modules/
-

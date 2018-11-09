@@ -23,10 +23,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.*;
 
-
-/**
- * 2018-01-24 14:54:12<br/>
- */
 @Service
 public class FlyerJobsServiceImpl implements FlyerJobsService {
 
@@ -59,10 +55,8 @@ public class FlyerJobsServiceImpl implements FlyerJobsService {
 
     @Override
     public RestResponse removeFlyerJobs(Long flyerJobsId) {
-
         //停止quartz的任务
         quartzService.pauseJob(flyerJobsId);
-
         //清理db中的任务数据
         flyerJobsDao.removeFlyerJobsById(flyerJobsId);
         return RestResponse.success().build();
@@ -140,7 +134,6 @@ public class FlyerJobsServiceImpl implements FlyerJobsService {
                 map.put("client", Utils.getClientStr(conn.getConnection()));
                 map.put("createTime", conn.getCreateTime());
                 map.put("lastFlushTime", conn.getLastFlushTime());
-
                 clientList.add(map);
             }
         }
@@ -156,7 +149,6 @@ public class FlyerJobsServiceImpl implements FlyerJobsService {
             log.error("error job id: {}", id);
             //throws exception
         }
-
         Long recordId = UID.next();
         flyerJobs.setRecordId(recordId);
         flyerJobs.setExecuteType(FlyerConstants.executeTypeCancel);

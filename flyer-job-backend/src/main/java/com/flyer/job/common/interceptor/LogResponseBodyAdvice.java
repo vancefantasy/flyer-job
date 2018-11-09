@@ -11,9 +11,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-/**
- * Created by jianying.li on 2018/9/16.
- */
 //@ControllerAdvice
 public class LogResponseBodyAdvice implements ResponseBodyAdvice<RestResponse> {
 

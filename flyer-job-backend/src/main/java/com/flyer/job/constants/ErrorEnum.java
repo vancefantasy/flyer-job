@@ -2,7 +2,6 @@ package com.flyer.job.constants;
 
 /**
  * Errors
- * Created by jianying.li on 2018/9/16.
  */
 public enum ErrorEnum {
     //4XX

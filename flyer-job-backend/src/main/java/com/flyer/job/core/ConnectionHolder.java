@@ -11,7 +11,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 连接持有者
- * Created by jianying.li on 2018/1/31.
  */
 public class ConnectionHolder {
 

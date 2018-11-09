@@ -31,35 +31,35 @@ export const getFlyerJobListPage = params => {
 };
 
 export const removeFlyerJob = params => {
-    return axios.get(`${base}/flyerJob/remove`, {params: params});
+    return axios.get(`${base}/flyerjob/remove`, {params: params});
 };
 
 export const operateFlyerJob = params => {
-    return axios.get(`${base}/flyerJob/operate`, {params: params});
+    return axios.get(`${base}/flyerjob/operate`, {params: params});
 };
 
 export const runFlyerJobNow = params => {
-    return axios.get(`${base}/flyerJob/runnow`, {params: params});
+    return axios.get(`${base}/flyerjob/runnow`, {params: params});
 };
 
 export const cancelFlyerJobNow = params => {
-    return axios.get(`${base}/flyerJob/cancel`, {params: params});
+    return axios.get(`${base}/flyerjob/cancel`, {params: params});
 };
 
 export const batchRemoveFlyerJob = params => {
-    return axios.get(`${base}/flyerJob/batchremove`, {params: params});
+    return axios.get(`${base}/flyerjob/batchremove`, {params: params});
 };
 
 export const editFlyerJob = params => {
-    return axios.post(`${base}/flyerJob/edit`, params);
+    return axios.post(`${base}/flyerjob/edit`, params);
 };
 
 export const addFlyerJob = params => {
-    return axios.get(`${base}/flyerJob/add`, {params: params});
+    return axios.get(`${base}/flyerjob/add`, {params: params});
 };
 
 export const listClient = params => {
-    return axios.get(`${base}/flyerJob/clients`, {params: params});
+    return axios.get(`${base}/flyerjob/clients`, {params: params});
 };
 
 //record

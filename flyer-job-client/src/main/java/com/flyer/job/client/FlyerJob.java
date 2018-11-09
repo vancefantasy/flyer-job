@@ -1,7 +1,7 @@
 package com.flyer.job.client;
 
 /**
- * Created by jianying.li on 2018/1/31.
+ * flyer job 抽象类
  */
 public abstract class FlyerJob implements Job {
 

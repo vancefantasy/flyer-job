@@ -10,7 +10,7 @@ import org.xsocket.connection.Server;
 import java.util.Arrays;
 
 /**
- * Created by jianying.li on 2018/1/30.
+ * flyer job server
  */
 public class FlyerServer {
 

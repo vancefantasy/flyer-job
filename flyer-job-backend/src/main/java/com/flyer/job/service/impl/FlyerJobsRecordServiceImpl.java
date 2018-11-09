@@ -22,11 +22,6 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-
-
-/**
- * 2018-02-12 18:10:57<br/>
- */
 @Service
 public class FlyerJobsRecordServiceImpl implements FlyerJobsRecordService {
 
@@ -64,11 +59,9 @@ public class FlyerJobsRecordServiceImpl implements FlyerJobsRecordService {
     @Override
     public RestResponse list(Long jobId) {
         FlyerJobs flyerJobs = flyerJobsDao.findFlyerJobsById(jobId);
-
         if (flyerJobs == null) {
             throw new RuntimeException("flyerJobs is not exists, id" + jobId);
         }
-
         List<FlyerJobsRecord> list = flyerJobsRecordDao
             .listRecent(flyerJobs.getAppCode(), flyerJobs.getJobBeanId(), flyerJobs.getVhost());
         List<LogRecords> voList = new ArrayList<>();
@@ -92,7 +85,6 @@ public class FlyerJobsRecordServiceImpl implements FlyerJobsRecordService {
             vo.setLogs(logs);
             voList.add(vo);
         }
-
         //最近10次运行时间
         List<String> triggerTimes = new ArrayList<>();
         try {
@@ -106,10 +98,8 @@ public class FlyerJobsRecordServiceImpl implements FlyerJobsRecordService {
         Map map = new HashMap<>();
         map.put("records", voList);
         map.put("triggerTimes", triggerTimes);
-
         return RestResponse.success(map).build();
     }
-
 
     private static void recursionPrint(List<String> triggerTimes, CronExpression cron, Date date,
         int num) {
@@ -145,8 +135,4 @@ public class FlyerJobsRecordServiceImpl implements FlyerJobsRecordService {
         }
 
     }
-
-
-
 }
-

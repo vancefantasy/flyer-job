@@ -5,7 +5,6 @@ import com.flyer.job.constants.ErrorEnum;
 
 /**
  * User-defined Exception
- * Created by jianying.li on 2018/9/16.
  */
 public class BizException extends RuntimeException {
 

@@ -6,7 +6,6 @@ import java.util.Date;
 
 /**
  * 连接实体定义
- * Created by jianying.li on 2018/1/31.
  */
 public class FlyerConnection {
 

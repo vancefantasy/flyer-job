@@ -1,5 +1,6 @@
 package com.flyer.job.web;
 
+import com.flyer.job.common.BaseController;
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.common.annotation.NoNeedLogin;
 import com.flyer.job.domain.FlyerUsers;
@@ -13,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by jianying.li on 2018/1/13.
+ * 用户相关Controller
  */
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private FlyerUsersService flyerUsersService;

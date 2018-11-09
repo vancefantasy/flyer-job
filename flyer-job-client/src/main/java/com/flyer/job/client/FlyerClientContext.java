@@ -12,9 +12,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import java.util.Map;
 
 /**
- * spring 容器启动完成或刷新时，监听事件，初始化flyer
- * <p>
- * Created by jianying.li on 2018/1/31.
+ * 初始化flyer job client
  */
 public class FlyerClientContext
     implements DisposableBean, ApplicationListener<ContextRefreshedEvent>, ApplicationContextAware {
@@ -34,7 +32,7 @@ public class FlyerClientContext
         if (event.getApplicationContext().getParent() == null && !haveInit) {
             haveInit = true;
 
-            log.info("begin to init flyer client context");
+            log.info("Initializing flyer client context");
 
             //register "FlyerConfig" by manual
             registerFlyerConfigBean();
@@ -42,7 +40,7 @@ public class FlyerClientContext
             //init flyer config
             loadFlyerConfig();
 
-            if (flyerConfig.isDisable()){
+            if (flyerConfig.getDisable()) {
                 log.info("NOTE: flyer was set disable");
                 return;
             }
@@ -63,7 +61,7 @@ public class FlyerClientContext
                         flyerClient.close();
                     }
                 }));
-                log.info("flyer client init success");
+                log.info("flyer client initialized");
             } catch (Throwable throwable) {
                 log.error("flyer Client load error, config: {}", flyerConfig.toString());
                 if (flyerConfig.getDepend()) {
@@ -110,11 +108,7 @@ public class FlyerClientContext
     private void loadFlyerConfig() {
         flyerConfig = applicationContext.getBean(FlyerConfig.class);
         flyerConfig.setConfig();
-        log.info(
-            "flyer client config init complete, servers : {}, appCode : {}, corePoolSize: {}, maxPoolSize: {}, keepAliveTime: {}, depend: {}",
-            flyerConfig.getServers(), flyerConfig.getAppCode(), flyerConfig.getCorePoolSize(),
-            flyerConfig.getMaxPoolSize(), flyerConfig.getKeepAliveTime(),
-            flyerConfig.getDepend() ? "strong depend" : "weak depend");
+        log.info("\n flyer client config: {}", flyerConfig.toString());
     }
 
 }

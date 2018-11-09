@@ -2,7 +2,6 @@ package com.flyer.job;
 
 /**
  * 协议编号常量类
- * Created by jianying.li on 2018/1/30.
  */
 public interface ProtocolConstants {
 

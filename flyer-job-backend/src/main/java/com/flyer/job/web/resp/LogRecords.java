@@ -3,7 +3,7 @@ package com.flyer.job.web.resp;
 import java.util.List;
 
 /**
- * Created by jianying.li on 2018/2/27.
+ * 日志信息
  */
 public class LogRecords {
 

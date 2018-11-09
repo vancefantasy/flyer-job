@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 核心任务定义类
- * Created by jianying.li on 2018/1/28.
  */
 public class InternalJob implements Job {
 

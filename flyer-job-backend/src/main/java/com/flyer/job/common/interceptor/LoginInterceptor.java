@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 /**
- * Created by jianying.li on 2018/10/30.
+ * 登录拦截器
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
@@ -31,9 +31,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             .isAnnotationPresent(NoNeedLogin.class)) {
             return true;
         }else {
-            String authUser = CookieUtil.getCookie(request, FlyerConstants.sessionUser);
+            String token = CookieUtil.getCookie(request, FlyerConstants.sessionUser);
 
-            if(StringUtils.isNotBlank(authUser) && LoginUtil.checkSession(LoginUtil.decrypt(authUser))){
+            if(StringUtils.isNotBlank(token) && LoginUtil.checkSession(LoginUtil.decrypt(token))){
                 return true;
             }else {
                 //401
@@ -45,7 +45,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 writer.close();
                 return false;
             }
-
         }
     }
 

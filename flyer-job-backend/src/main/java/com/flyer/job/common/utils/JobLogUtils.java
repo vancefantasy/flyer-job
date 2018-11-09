@@ -14,7 +14,6 @@ import java.util.Date;
 
 /**
  * 日志记录工具类
- * Created by jianying.li on 2018/2/12.
  */
 public class JobLogUtils {
 

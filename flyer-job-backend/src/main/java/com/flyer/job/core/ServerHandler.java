@@ -12,7 +12,6 @@ import java.util.Arrays;
 
 /**
  * flyer服务端协议处理handler
- * Created by jianying.li on 2018/1/30.
  */
 public class ServerHandler
     implements IDataHandler, IConnectHandler, IIdleTimeoutHandler, IConnectionTimeoutHandler,

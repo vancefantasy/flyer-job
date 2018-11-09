@@ -17,7 +17,6 @@ import static org.quartz.TriggerBuilder.newTrigger;
 
 /**
  * flyer启动后，初始化一些内部任务
- * Created by jianying.li on 2018/5/12.
  */
 @Component
 public class InitRunner implements CommandLineRunner {

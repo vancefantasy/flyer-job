@@ -5,10 +5,6 @@ import com.flyer.job.domain.FlyerUsers;
 
 import javax.servlet.http.HttpServletResponse;
 
-
-/**
- * 2018-01-24 14:54:12 <br/>
- */
 public interface FlyerUsersService {
 
     RestResponse saveFlyerUsers(FlyerUsers flyerUsers);

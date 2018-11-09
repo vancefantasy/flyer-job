@@ -11,7 +11,6 @@ import java.util.Arrays;
 
 /**
  * flyer client 业务处理handler
- * Created by jianying.li on 2018/1/31.
  */
 public class ClientHandler
     implements IDataHandler, IConnectHandler, IIdleTimeoutHandler, IConnectionTimeoutHandler,

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * Spring获取bean工具类
- * Created by jianying.li on 2018/2/12.
  */
 @Component
 public class BeanFactoryRegister implements BeanFactoryAware {

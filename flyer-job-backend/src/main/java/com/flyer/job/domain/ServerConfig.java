@@ -2,9 +2,6 @@ package com.flyer.job.domain;
 
 import java.util.Date;
 
-/**
- * Created by jianying.li on 2018/3/9.
- */
 public class ServerConfig {
 
     /**

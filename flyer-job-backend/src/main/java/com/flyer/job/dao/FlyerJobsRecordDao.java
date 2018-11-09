@@ -5,9 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * 2018-02-12 18:10:57<br/>
- */
 public interface FlyerJobsRecordDao {
 
     Integer saveFlyerJobsRecord(FlyerJobsRecord flyerJobsRecord);

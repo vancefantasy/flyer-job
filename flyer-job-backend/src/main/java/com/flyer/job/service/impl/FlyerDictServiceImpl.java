@@ -6,15 +6,11 @@ import com.flyer.job.service.FlyerDictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * 2018-03-08 11:49:05<br/>
- */
 @Service
 public class FlyerDictServiceImpl implements FlyerDictService {
 
     @Autowired
     private FlyerDictDao flyerDictDao;
-
 
     public FlyerDict saveFlyerDict(FlyerDict flyerDict) {
         int result = flyerDictDao.saveFlyerDict(flyerDict);
@@ -37,4 +33,3 @@ public class FlyerDictServiceImpl implements FlyerDictService {
     }
 
 }
-

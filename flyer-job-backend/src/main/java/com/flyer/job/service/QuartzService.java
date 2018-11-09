@@ -1,8 +1,5 @@
 package com.flyer.job.service;
 
-/**
- * Created by jianying.li on 2018/1/30.
- */
 public interface QuartzService {
 
     /**

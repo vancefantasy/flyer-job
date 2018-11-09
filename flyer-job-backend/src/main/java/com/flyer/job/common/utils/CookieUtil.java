@@ -4,23 +4,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by jianying.li on 2018/10/30.
- */
 public class CookieUtil {
 
-    /**
-     * 设置cookie
-     *
-     * @param response
-     * @param name
-     * @param value
-     * @param maxAge
-     */
     public static void setCookie(HttpServletResponse response, String name, String value,
         String path, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath(path);
+        cookie.setHttpOnly(true);
         if (maxAge > 0) {
             cookie.setMaxAge(maxAge);
         }
@@ -40,13 +30,6 @@ public class CookieUtil {
         setCookie(response, name, "", "/", 3600);
     }
 
-    /**
-     * 获取cookie
-     *
-     * @param request
-     * @param name
-     * @return
-     */
     public static String getCookie(HttpServletRequest request, String name) {
         String value = null;
         Cookie[] cookies = request.getCookies();
@@ -60,16 +43,8 @@ public class CookieUtil {
         return value;
     }
 
-    /**
-     * 删除cookie
-     *
-     * @param response
-     * @param name
-     * @return
-     */
     public static void removeCookie(HttpServletResponse response, String name) {
         setCookie(response, name, "", "/", 0);
     }
-
 
 }

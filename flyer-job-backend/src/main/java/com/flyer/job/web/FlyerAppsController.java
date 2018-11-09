@@ -1,5 +1,6 @@
 package com.flyer.job.web;
 
+import com.flyer.job.common.BaseController;
 import com.flyer.job.common.RestResponse;
 import com.flyer.job.domain.FlyerApps;
 import com.flyer.job.service.FlyerAppsService;
@@ -9,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by jianying.li on 2018/1/24.
+ * 应用管理controller
  */
 @RestController
 @RequestMapping("app")
-public class FlyerAppsController {
+public class FlyerAppsController extends BaseController {
 
     @Autowired
     private FlyerAppsService flyerAppsService;

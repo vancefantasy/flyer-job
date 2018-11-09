@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 日志类型
- * Created by jianying.li on 2018/2/27.
  */
 public enum ExecuteType {
 

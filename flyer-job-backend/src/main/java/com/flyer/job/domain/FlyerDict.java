@@ -3,13 +3,9 @@ package com.flyer.job.domain;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-/**
- * 2018-03-08 11:49:04<br/>
- */
 public class FlyerDict implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = -5977154079788417900L;
     /**
      * 主键
      */
@@ -38,9 +34,7 @@ public class FlyerDict implements Serializable {
      * 创建时间
      */
     private java.util.Date createTime;
-    /**
-     * 更新时间
-     */
+
     private java.sql.Timestamp timestamp;
 
     public void setId(Integer id) {
