@@ -24,8 +24,7 @@ bookShowToC: true
 
 ## 配置
 
-    //properties
-    //note:加载properties文件时，请将ignoreUnresolvablePlaceholders设置为true
+    //properties文件名无所谓，但请确保该文件被spring加载
     flyer.appCode=flyerjob-springmvc-showcase
     flyer.servers=127.0.0.1:20180
     flyer.vhost=dev
@@ -55,7 +54,7 @@ bookShowToC: true
 
         @Override
         public FlyerResult execute(String param) throws Exception {
-            log.info("HelloWorldJob run ok");
+            log.info("HelloWorldJob run, param: {}", param);
             return new FlyerResult(FlyerResult.Result.SUCCESS, "run ok");
         }
     }

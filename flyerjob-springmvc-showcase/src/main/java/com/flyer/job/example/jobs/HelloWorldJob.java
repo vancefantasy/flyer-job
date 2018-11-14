@@ -13,7 +13,7 @@ public class HelloWorldJob extends FlyerJob {
 
     @Override
     public FlyerResult execute(String param) throws Exception {
-        log.info("HelloWorldJob run ok");
+        log.info("HelloWorldJob run, param : {}", param);
         return new FlyerResult(FlyerResult.Result.SUCCESS, "run ok");
     }
 }

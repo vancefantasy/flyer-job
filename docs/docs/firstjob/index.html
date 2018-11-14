@@ -83,8 +83,7 @@
 
 <h2 id="配置">配置</h2>
 
-<pre><code>//properties
-//note:加载properties文件时，请将ignoreUnresolvablePlaceholders设置为true
+<pre><code>//properties文件名无所谓，但请确保该文件被spring加载
 flyer.appCode=flyerjob-springmvc-showcase
 flyer.servers=127.0.0.1:20180
 flyer.vhost=dev
@@ -115,7 +114,7 @@ public class HelloWorldJob extends FlyerJob {
 
     @Override
     public FlyerResult execute(String param) throws Exception {
-        log.info(&quot;HelloWorldJob run ok&quot;);
+        log.info(&quot;HelloWorldJob run, param: {}&quot;, param);
         return new FlyerResult(FlyerResult.Result.SUCCESS, &quot;run ok&quot;);
     }
 }
