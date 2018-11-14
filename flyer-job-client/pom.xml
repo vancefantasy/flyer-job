@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.github.vancefantasy</groupId>
         <artifactId>flyer-job</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -15,43 +15,36 @@
     <artifactId>flyer-job-client</artifactId>
     <packaging>jar</packaging>
     <name>flyer-job-client</name>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <dependencies>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>4.3.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>4.3.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.xsocket</groupId>
             <artifactId>xSocket</artifactId>
             <version>2.8.15</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
 

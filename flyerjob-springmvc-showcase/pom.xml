@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.vancefantasy</groupId>
         <artifactId>flyer-job</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>io.github.vancefantasy</groupId>
@@ -14,12 +14,13 @@
     <packaging>war</packaging>
     <name>flyerjob-springmvc-showcase</name>
     <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
     <dependencies>
         <dependency>
             <groupId>io.github.vancefantasy</groupId>
             <artifactId>flyer-job-client</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

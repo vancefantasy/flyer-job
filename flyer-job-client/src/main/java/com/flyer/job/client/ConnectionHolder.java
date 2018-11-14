@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by jianying.li on 2018/1/31.
- */
 public class ConnectionHolder {
 
     private final static Logger log = LoggerFactory.getLogger(ConnectionHolder.class);

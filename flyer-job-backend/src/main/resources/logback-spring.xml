@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds">
-    <springProfile name="dev">
-        <property resource="application-dev.properties"/>
-    </springProfile>
-    <springProfile name="prod">
-        <property resource="application-${spring.profiles.active}.properties"/>
-    </springProfile>
     <property name="LOG_HOME" value="${logs.home}"/>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

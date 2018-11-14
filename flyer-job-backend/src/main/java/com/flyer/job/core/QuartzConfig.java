@@ -6,8 +6,10 @@ import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -27,8 +29,19 @@ public class QuartzConfig {
     @Bean
     public Properties quartzProperties() throws IOException {
         PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        //修改过quartz的配置文件 默认名
-        propertiesFactoryBean.setLocation(new ClassPathResource(System.getProperty(StdSchedulerFactory.PROPERTIES_FILE)));
+        String fileName = System.getProperty(StdSchedulerFactory.PROPERTIES_FILE);
+        //see https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
+        //1 file:./config/application.properties
+        //2 file:./application.properties
+        //3 classpath:application.properties
+        Resource resource = new ClassPathResource("file:" + "config" + File.separator + fileName);
+        if (!resource.exists()) {
+            resource =   new ClassPathResource("file:" + fileName);
+            if (!resource.exists()){
+                resource = new ClassPathResource(fileName);
+            }
+        }
+        propertiesFactoryBean.setLocation(resource);
         propertiesFactoryBean.afterPropertiesSet();
         return propertiesFactoryBean.getObject();
     }

@@ -7,7 +7,6 @@ import java.io.IOException;
 
 /**
  * 执行任务线程
- * Created by jianying.li on 2018/2/2.
  */
 public class FlyerTask implements Runnable {
 

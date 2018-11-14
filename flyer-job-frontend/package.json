@@ -1,8 +1,7 @@
 {
-  "name": "flyeradmin",
+  "name": "flyer-job-frontend",
   "version": "0.0.1",
-  "description": "flyerjob admin project",
-  "license": "MIT",
+  "description": "flyer job frontend",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

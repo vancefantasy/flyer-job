@@ -31,7 +31,7 @@ bookShowToC: true
     flyer.vhost=dev
 
     //for springframwork
-    <bean class="com.elong.flyer.client.FlyerClientContext"/>
+    <bean class="com.flyer.job.client.FlyerClientContext"/>
 
     //for springboot
     @Bean
