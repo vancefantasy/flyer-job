@@ -14,6 +14,7 @@
         <fileSet>
             <directory>src/main/assembly/bin/</directory>
             <outputDirectory>/bin</outputDirectory>
+            <fileMode>775</fileMode>
         </fileSet>
         <fileSet>
             <directory>src/main/assembly/db/</directory>

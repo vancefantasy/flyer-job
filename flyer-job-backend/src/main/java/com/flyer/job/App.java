@@ -55,7 +55,7 @@ public class App extends SpringBootServletInitializer {
 
     private static void setQuartzConfigFile() {
         //这里把quartz的配置文件和spring boot的配置文件整合在一起
-        //将quartz的默认配置文件重置为 application-${spring.profiles.active}.properties 格式
+        //将quartz的默认配置文件重置为 application-${spring.profiles.active}.properties
         String activeProfiles = System.getProperty(FlyerConstants.keyOfProfile);
 
         //未指定 '-Dspring.profiles.active=x' 时，默认是dev环境
